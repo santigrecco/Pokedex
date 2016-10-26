@@ -1,0 +1,41 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.introduccion{
+    width: 100%;
+    background-color: gold;
+    float: left;
+}
+.title a{
+    text-decoration: none;
+    font-size: 150%;
+}
+
+.title{
+    float: left;
+    width: 20%;
+}
+.texto-boton{
+    margin-top: 0.3%;
+}
+
+.buscador{
+    float: left;
+    width: 60%;
+}
+
+.label-search{
+    float: left;
+    margin-top: 0.3%;
+    font-weight: bold;
+    font-family: Arial;
+    margin-right: 0.2%;
+}
