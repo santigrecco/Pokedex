@@ -1,0 +1,6 @@
+Tareas:
+-Repo Git
+-Scafolding
+-node watch
+-Manejo Json
+-Interfaz
