@@ -54,3 +54,23 @@ body{
     position: relative;
     text-align: center;
 }
+
+.pokemon-imagen{
+    position: absolute;
+    top: 25%;
+    left: 21%;
+    width: 26%;
+}
+
+.datos-pokemon{
+    position: absolute;
+    top: 26%;
+    left: 55%;
+    width: 23.5%;
+    height: 62%;
+}
+
+.lista-de-datos{
+    list-style: none;
+    text-align: left;
+}
