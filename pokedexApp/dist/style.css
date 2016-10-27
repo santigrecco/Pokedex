@@ -43,3 +43,11 @@ body{
 .contacto-social{
     margin-top: 0.3%;
 }
+.contenido-principal{
+	width: 100%;
+}
+
+.resultado-pokedex{
+	width: 70%;
+    background-image: url("C:\Users\m.mazagatti\Desktop\pokedex\pokedexApp\Pokedex.png")
+}
