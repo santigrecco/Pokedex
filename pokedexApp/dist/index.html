@@ -9,16 +9,12 @@
 <body>
 <nav class="introduccion">
     <div class="title">
-        <a href=""><img src="../pok.png" width="20" height="20" style="border-radius: 50%" title="Home" alt="Home">
+        <a href=""><img src="../pok.png" width="25" height="25" style="border-radius: 50%" title="Home" alt="Home">
             PokeDex</a>
     </div>
-    <div class="buscador">
-        <label for="pokemonSearch" class="label-search">Buscar por nombre:</label>
-        <div class="texto-boton">
-            <input type="search" name="search" id="pokemonSearch" placeholder="Pokemon name..." style="float: left;">
-            <button type="button" title="Buscar" style="float: left;"><i class="fa fa-search" aria-hidden="true"></i>
-            </button>
-        </div>
+    <div class="pestañas-busqueda">
+        <input type="button" name="boton" title="Nombre" value="Nombre"></input>
+        <input type="button" name="boton" title="Tipo" value="Tipo"></input>
     </div>
     <div class="contacto-social">
         <i class="fa fa-facebook-square" aria-hidden="true" title="Facebook"></i>
@@ -27,6 +23,24 @@
         <i class="fa fa-money" aria-hidden="true" title="Help us!"></i>
     </div>
 </nav>
+<div class="busqueda">
+<div class="buscadorNombre">
+        <div class="texto-boton">
+            <input type="search" name="search" id="pokemonSearch" placeholder="Buscar por nombre..." style="float: left;">
+            <button type="button" title="Buscar" style="float: left;"><i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <button type="button" title="Buscar" style="float: left;"><i class="fa fa-refresh" aria-hidden="true">Random</i>
+            </button>
+        </div>
+    </div>
+    <div class="buscadorTipo">
+        <div>
+            <input type="search" name="search" id="pokemonSearch" placeholder="Buscar por tipo" style="float: left;">
+            <button type="button" title="Buscar" style="float: left;"><i class="fa fa-refresh" aria-hidden="true">Random</i>
+            </button>
+        </div>
+    </div>
+</div>
 <div class="contenido-principal">
     <div class="resultado-pokedex">
         <img src="../Pokedex.png" alt="Error IMG NOT FOUND. Recargar pagina por favor">
