@@ -4,3 +4,8 @@ Tareas:
 -node watch
 -Manejo Json
 -Interfaces
+
+-Random Pokemon
+-Input radio
+-Disable buttons when loading
+-Mensajes Encontrado, cargando y no encontrado.
