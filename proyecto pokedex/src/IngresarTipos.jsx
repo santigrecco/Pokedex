@@ -57,7 +57,7 @@ export default class IngresarTipos extends Component{
       .then( (pokemonData) => {
       if(pokemonData.detail != "Not found." ){
           //pokemons.push(pokemonData);
-         if (tipo1!='tipo1' && tipo2!='tipo2') {
+         if (tipo1!='tipo1' && tipo2!='tipo2' && tipo1!=tipo2) {
          	pokemonData = filtrarPkmn(pokemonData,tipo2);
          }
         this.props.handleStatePokemons(pokemonData);
