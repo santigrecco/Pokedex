@@ -97,7 +97,9 @@ export const  searchPokemonByType = (idType) => {
 		       	});
 
 
-	       		Promise.all(promisesArray).then((results) => {
+	       		Promise.all(promisesArray).then( (results) => {
+	       			//Ahora discriminamos segun tipo secundario
+
 	       			resolve(results);
 	       			console.log("termine guacho");
 	       		}, (errs) => {
