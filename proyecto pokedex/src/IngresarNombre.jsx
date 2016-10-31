@@ -61,19 +61,17 @@ export default class IngresarNombre extends Component{
       });
     }
 
-
-
 	render(){
 		const{pokemonABuscar} = this.state;
 		const {onBuscar, onBuscarAlAzar, actualizarPokemonABuscar} = this;
+		const estadoCargando = this.props.getStateCargando();
 		console.log("esta renderaizanodo");
 		return (
 			<div className="divInputId">
 				<input className="inputId" type="text" placeholder="nombre Pokemon o nro Pokedex" 
 				 onChange={actualizarPokemonABuscar} />
-				<button onClick={ () => onBuscar()}>Buscar</button>
-				<button onClick={ () => onBuscarAlAzar()}>Random</button><br/>
-
+				<button disabled={estadoCargando}  onClick={ () => onBuscar()}>Buscar</button>
+				<button disabled={estadoCargando}  onClick={ () => onBuscarAlAzar()}>Random</button><br/>
 			</div>
 		)
 	}

@@ -15,12 +15,16 @@ export default class IngresarTipos extends Component{
 		this.handleTipo1 = this.handleTipo1.bind(this);
 		this.handleTipo2 = this.handleTipo2.bind(this);
 		this.onBuscarPorTipo = this.onBuscarPorTipo.bind(this);
+		this.filtrarPkmn = this.filtrarPkmn.bind(this);
 	}
 
 
 
 	onBuscarPorTipo(){
-      let {pokemons, tipo1,cargando} = this.state;
+      let {pokemons, tipo1, tipo2} = this.state;
+      tipo1 = tipo1.toLowerCase();
+      tipo2 = tipo2.toLowerCase();
+      let {filtrarPkmn} = this;
       this.props.handleStateCargando(true);
       let tipoBuscado = tipo1;
       if (tipoBuscado==='tipo1') {
@@ -48,10 +52,14 @@ export default class IngresarTipos extends Component{
       	let random = Math.floor(Math.random() * (17));
       	tipoBuscado = tipos[random];
       }
+
       searchPokemonByType(tipoBuscado.toLowerCase())
       .then( (pokemonData) => {
       if(pokemonData.detail != "Not found." ){
           //pokemons.push(pokemonData);
+         if (tipo1!='tipo1' && tipo2!='tipo2') {
+         	pokemonData = filtrarPkmn(pokemonData,tipo2);
+         }
         this.props.handleStatePokemons(pokemonData);
       }else{
         console.log("No se encontro el pokemon");
@@ -59,6 +67,18 @@ export default class IngresarTipos extends Component{
       this.props.handleStateCargando(false);
 
       });
+    }
+
+    filtrarPkmn(listaPkmn,tipo){
+    	console.log("filtrando por: "+tipo);
+    	let listaADevolver = [];
+    	listaPkmn.forEach( (pkmn) => {
+    		if (pkmn.types.length>1 && (pkmn.types[0].type.name==tipo || pkmn.types[1].type.name==tipo)){
+    			console.log("pokemon filtrable");
+    			listaADevolver.push(pkmn);
+    		}
+    	})
+    	return listaADevolver;
     }
 
     handleTipo1(event){
@@ -85,7 +105,7 @@ export default class IngresarTipos extends Component{
 		return (
 			<div className="divTipos">
 				<select className="seleccTipo1" onChange={handleTipo1}>
-					<option value="tipo1">Tipo 1</option>
+					<option value="tipo1">Tipo 1 (Random)</option>
 		            <option value="Fire">Fire</option>
 		            <option value="Water">Water</option>
 		            <option value="Grass">Grass</option>
@@ -126,7 +146,7 @@ export default class IngresarTipos extends Component{
 		            <option value="Rock">Rock</option>
 		            <option value="Steel">Steel</option>
 				</select>
-				<button onClick={() => onBuscarPorTipo()}>Buscar</button>
+				<button disabled={this.props.getStateCargando()} onClick={() => onBuscarPorTipo()}>Buscar</button>
 			</div>
 		)
 	}
