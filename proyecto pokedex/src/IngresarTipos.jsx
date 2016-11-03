@@ -20,7 +20,7 @@ export default class IngresarTipos extends Component{
 
 
 
-	onBuscarPorTipo(){
+	onBuscarPorTipo(props){
       let {pokemons, tipo1, tipo2} = this.state;
       tipo1 = tipo1.toLowerCase();
       tipo2 = tipo2.toLowerCase();
@@ -60,8 +60,10 @@ export default class IngresarTipos extends Component{
          if (tipo1!='tipo1' && tipo2!='tipo2' && tipo1!=tipo2) {
          	pokemonData = filtrarPkmn(pokemonData,tipo2);
          }
+         this.props.handleStateMensajeResultado("Mostrando datos de pokemon tipo "+tipo1+" y "+tipo2);
         this.props.handleStatePokemons(pokemonData);
       }else{
+      	this.props.handleStateMensajeResultado("No se han encontrado pokemon con esos tipos :c");
         console.log("No se encontro el pokemon");
       }
       this.props.handleStateCargando(false);
@@ -103,7 +105,7 @@ export default class IngresarTipos extends Component{
 			mostrarTipo2=true;
 		}
 		return (
-			<div className="divTipos">
+			<div className="formularioDeBusqueda">
 				<select className="seleccTipo1" onChange={handleTipo1}>
 					<option value="tipo1">Tipo 1 (Random)</option>
 		            <option value="Fire">Fire</option>

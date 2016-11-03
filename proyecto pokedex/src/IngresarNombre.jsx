@@ -6,7 +6,7 @@ export default class IngresarNombre extends Component{
 	constructor(props) {
 		super(props);
 		this.state= {
-			"pokemonABuscar": "pikachu"
+			"pokemonABuscar": ""
 		};
 		this.actualizarPokemonABuscar = this.actualizarPokemonABuscar.bind(this);
 		this.onBuscar = this.onBuscar.bind(this);
@@ -30,15 +30,20 @@ export default class IngresarNombre extends Component{
     	);
     }   
 
-	onBuscar(){
+	onBuscar(props){
       let {pokemonABuscar} = this.state;
       this.props.handleStateCargando(true);
       searchPokemonById(pokemonABuscar)
       .then( (pokemonData) => {
         if(pokemonData[0].detail != "Not found." ){
-          //pokemons.push(pokemonData);
-        this.props.handleStatePokemons(pokemonData)
+        	this.props.handleStateMensajeResultado("Mostrando datos de "+ pokemonData[0].name);
+         	//pokemons.push(pokemonData);
+
+        this.props.handleStatePokemons(pokemonData);
+        
+
       }else{
+      	this.props.handleStateMensajeResultado("No se ha encontrado un pokemon con ese nomnbre/id");
         console.log("No se encontro el pokemon");
       }
       this.props.handleStateCargando(false);
@@ -53,8 +58,11 @@ export default class IngresarNombre extends Component{
       .then( (pokemonData) => {
         if(pokemonData[0].detail != "Not found." ){
           //pokemons.push(pokemonData);
+          this.props.handleStateMensajeResultado("Mostrando datos de "+ pokemonData[0].name);
         this.props.handleStatePokemons(pokemonData);
+
       	}else{
+      		this.props.handleStateMensajeResultado("No se ha encontrado un pokemon con ese nomnbre/id");
        	 	console.log("No se encontro el pokemon");
      	}
      	this.props.handleStateCargando(false);
@@ -65,13 +73,28 @@ export default class IngresarNombre extends Component{
 		const{pokemonABuscar} = this.state;
 		const {onBuscar, onBuscarAlAzar, actualizarPokemonABuscar} = this;
 		const estadoCargando = this.props.getStateCargando();
+		let habilitarBusqueda = true;
 		console.log("esta renderaizanodo");
+		if(pokemonABuscar==="" || estadoCargando){
+			habilitarBusqueda=false;
+		}
 		return (
-			<div className="divInputId">
-				<input className="inputId" type="text" placeholder="nombre Pokemon o nro Pokedex" 
-				 onChange={actualizarPokemonABuscar} />
-				<button disabled={estadoCargando}  onClick={ () => onBuscar()}>Buscar</button>
-				<button disabled={estadoCargando}  onClick={ () => onBuscarAlAzar()}>Random</button><br/>
+			 <div className="formularioDeBusqueda">
+				<form>
+					<input
+					className="inputId"
+					type="text"
+					placeholder="Nombre / ID Pokemon"
+					onChange={actualizarPokemonABuscar}
+					/>
+					<input
+					type="submit"
+					disabled={!habilitarBusqueda}
+					onClick={ () => onBuscar()}
+					value="Buscar"
+					/>
+					<button disabled={estadoCargando}  onClick={ () => onBuscarAlAzar()}>Random</button><br/>
+				</form>
 			</div>
 		)
 	}
