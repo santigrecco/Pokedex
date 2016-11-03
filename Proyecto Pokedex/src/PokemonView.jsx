@@ -1,25 +1,26 @@
 import React from 'react';
 
 
-export const PokemonView = ({name,exp,weight,image,types,height}) => {
+export const PokemonView = ({name,base_experience,weight,image,types,height,handlePokemonData}) => {
 	let tipos = types[0].type.name;
+	if (image===null){
+		image='http://orig13.deviantart.net/2ed2/f/2011/123/8/e/who__s_that_pokemon_by_kevintut-d3fhm23.gif';
+	}
+	let newPokemonData = {name,base_experience,weight,image,types,height};
+
 	if (types.length>1)
 		if (types[1].slot==2)
 			tipos += " / " + types[1].type.name;
 		else
 			tipos = types[1].type.name + " / " + tipos;
-
 	return (
-			<div>
-				<div className="sprite-div"><img className="sprite" src={image} alt="no hay nada pibe kb"/></div>
-				<p className="nombre">Nombre: {name}</p>
-				<p className="tipos">Tipos: {tipos}</p>
-				<p className="exp">Base Exp: {exp} </p>
-				<p className="peso">Peso: {weight/10} kg</p>
-				<p className="altura">Altura: {height} ft</p>
-			</div>
+			<button className="pokemonView" onClick={() => handlePokemonData(newPokemonData) }>
+				<div className="sprite-div"><img className="sprite" src={image} alt=""/></div>
+				<p className="nombre">{name.charAt(0).toUpperCase() + name.slice(1)}</p>
+			</button>
 		);
 }
+				
 
 export const  searchPokemonById = (idPokemon) => {
 		let api_base_url = "http://pokeapi.co/api/v2/pokemon/";
@@ -48,7 +49,6 @@ export const  searchPokemonById = (idPokemon) => {
 				        	detail: detail
 				        });
 				      };
-			    	console.log(pokemonEncontrado);
 			    	resolve(pokemonEncontrado);
 			    })
 			    .catch( (err) => {
