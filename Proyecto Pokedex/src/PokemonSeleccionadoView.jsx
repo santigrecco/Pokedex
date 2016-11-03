@@ -22,11 +22,13 @@ export default class PokemonSeleccionadoView extends Component{
 		return (
 			<div className="resultado-pokedex-izquierda-datos">
 				<div className="sprite-div"><img className="sprite-grande" src={image} alt="no hay nada pibe kb"/></div>
+				<div className="statsBox">
 				<p className="nombre">{name.charAt(0).toUpperCase() + name.slice(1)}</p>
 				<p className="tipos">Tipos: {tipos}</p>
 				<p className="exp">Base Exp: {base_experience} </p>
 				<p className="peso">Peso: {weight/10} kg</p>
 				<p className="altura">Altura: {height} ft</p>
+				</div>
 			</div>
 		)
 	}
