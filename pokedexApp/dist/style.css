@@ -44,10 +44,14 @@ body{
     height: 100%;
     font-size: 170%;
     background-color: rgb(204,38,38);
-    border: none;
+    box-shadow: 2px 1px 56px -18px rgba(5,5,5,1);
+
+
 }
 .pestañas-busqueda input:hover{
     color: white;
+    box-shadow:  inset 2px 2px 4px 3px rgba(245,115,163,1);
+    
 }
 
 .label-search{
@@ -77,21 +81,50 @@ body{
     width: inherit;
     position: relative;
     text-align: center;
-}
+    
+    margin-left: auto;
+    margin-right: auto;
+    background: url(file:///C:/Users/santiago.cogorno.GLOBANT/Desktop/Pokedex/pokedexApp/Pokedex.png);
+    background-size: cover;
+    width: 800px;
+    height: 600px;
+  }
+
+
 
 .pokemon-imagen{
     position: absolute;
     top: 25%;
-    left: 21%;
-    width: 26%;
+    left: 4%;
+    width: 41.5%;
+    height: 56%;
+    border:2px solid brown;
+    
+}
+
+.perfil{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 40%;
+    border:2px solid black;
+}
+
+.perfil img{
+    position: absolute;
+    left:0;
+    margin-top: 7%;
 }
 
 .datos-pokemon{
     position: absolute;
     top: 26%;
-    left: 55%;
-    width: 23.5%;
+    left: 58%;
+    width: 37%;
     height: 62%;
+    border:2px solid brown;
+    
 }
 
 .lista-de-datos{
